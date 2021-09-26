@@ -27,3 +27,31 @@ export const createPost = async (req, res) => {
     }
     
 } 
+
+export const updatePost = async (req, res) => {
+
+    const { id } = req.params;
+    const { fullname, email, contact, location } = req.body;
+
+    const updatedPost = { fullname, email, contact, location, _id: id };
+
+    try {
+        await PostMessage.findByIdAndUpdate(id, updatedPost, { new: true });
+
+        res.json(updatedPost);
+    } catch (error) {
+        res.status(400).json(error);
+    }
+}
+
+export const deletePost = async (req, res) => {
+    const { id } = req.params;
+
+    try {
+        await PostMessage.findByIdAndRemove(id);
+
+        res.json({ message: 'Delete post successfully'});
+    } catch (error) {
+        console.log(error);
+    }
+}

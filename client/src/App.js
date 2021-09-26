@@ -2,16 +2,14 @@ import React from 'react'
 import { Container } from '@material-ui/core';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 
-import Form from './components/Form/Form';
-import TableData from './components/TableData/TableData'
+import Home from './components/Home/Home';
 
 const App = () => {
     return (
         <Container>
             <BrowserRouter>
             <Switch>
-                <Route path="/" exact component={Form} />
-                <Route path="/tableData" exact component={TableData} />
+                <Route path="/" exact component={Home} />
             </Switch>
             </BrowserRouter>
         </Container>
